@@ -102,6 +102,10 @@ app.get("/username", async (req,res)=>{
   userinfo.findOne({usernam:username}).then((data)=>{res.status(200).send(data);})
 })
 
+app.get("/", (req,res)=>{
+  res.send("Backend")
+})
+
 app.put("/put", async (req, res) => {
   let { id, time_Taken } = req.body;
   console.log(id, time_Taken)
