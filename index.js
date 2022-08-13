@@ -8,12 +8,12 @@ const bcrypt = require("bcryptjs");
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const app = express();
+app.use(cors());
 
 mongoose
   .connect(process.env.DATABASE_URL||"mongodb+srv://mobasshir:atlas1234@cluster0.tw3by.mongodb.net/TodoList?retryWrites=true&w=majority")
   .then(() => console.log("Connected to Data"));
 
-app.use(cors());
 app.use(express.json());    
 app.use(express.urlencoded({ extended: false }));
 
@@ -119,4 +119,5 @@ app.put("/put", async (req, res) => {
     }
   ).then((data)=>res.status(200).send(data));
 });
-app.listen(5000 || process.env.PORT , () => console.log("Connected to Server"));
+app.listen(8080 || process.env.PORT , () => console.log("Connected to Server"));
+ 
