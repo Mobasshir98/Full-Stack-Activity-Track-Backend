@@ -10,7 +10,7 @@ const jwt = require("jsonwebtoken");
 const app = express();
 
 mongoose
-  .connect("mongodb+srv://mobasshir:atlas1234@cluster0.tw3by.mongodb.net/TodoList?retryWrites=true&w=majority")
+  .connect(process.env.DATABASE_URL||"mongodb+srv://mobasshir:atlas1234@cluster0.tw3by.mongodb.net/TodoList?retryWrites=true&w=majority")
   .then(() => console.log("Connected to Data"));
 
 app.use(cors());
@@ -103,7 +103,7 @@ app.get("/username", async (req,res)=>{
 })
 
 app.get("/", (req,res)=>{
-  res.send("Backend")
+  res.status(200).send("Backend");
 })
 
 app.put("/put", async (req, res) => {
