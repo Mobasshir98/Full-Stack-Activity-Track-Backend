@@ -107,7 +107,9 @@ app.get("/post", async (req, res) => {
 
 app.get("/username", async (req,res)=>{
   let username=req.username.username
-  userinfo.findOne({usernam:username}).then((data)=>{res.status(200).send(data);})
+  userinfo.findOne({username:username}).then((data)=>{res.status(200).send(data);}).catch((err)=>{
+    console.log(err)
+  })
 })
 
 
