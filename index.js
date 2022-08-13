@@ -10,7 +10,7 @@ const jwt = require("jsonwebtoken");
 const app = express();
 
 mongoose
-  .connect("mongodb://localhost/todoList")
+  .connect("mongodb+srv://mobasshir:atlas1234@cluster0.tw3by.mongodb.net/TodoList?retryWrites=true&w=majority")
   .then(() => console.log("Connected to Data"));
 
 app.use(cors());
