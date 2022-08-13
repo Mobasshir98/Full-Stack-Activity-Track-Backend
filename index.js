@@ -10,12 +10,12 @@ const jwt = require("jsonwebtoken");
 const app = express();
 app.use(cors());
 
-app.set('Port', (process.env.PORT||5000))
+app.set('port', (process.env.PORT||5000))
 
 app.get('/', (req,res)=>{
   var result = "App is running"
   res.send(result);
-} ).listen(app.get('port') , ()=>{
+} ).listen(app.get('port') , function (){
   console.log('App is running, server is listening on port', app.get('port'));
 }  );
 mongoose
@@ -110,9 +110,7 @@ app.get("/username", async (req,res)=>{
   userinfo.findOne({usernam:username}).then((data)=>{res.status(200).send(data);})
 })
 
-app.get("/", (req,res)=>{
-  res.status(200).send("Backend");
-})
+
 
 app.put("/put", async (req, res) => {
   let { id, time_Taken } = req.body;
