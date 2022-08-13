@@ -10,6 +10,14 @@ const jwt = require("jsonwebtoken");
 const app = express();
 app.use(cors());
 
+app.set('Port', (process.env.PORT||5000))
+
+app.get('/', (req,res)=>{
+  var result = "App is running"
+  res.send(result);
+} ).listen(app.get('port') , ()=>{
+  console.log('App is running, server is listening on port', app.get('port'));
+}  );
 mongoose
   .connect(process.env.DATABASE_URL||"mongodb+srv://mobasshir:atlas1234@cluster0.tw3by.mongodb.net/TodoList?retryWrites=true&w=majority")
   .then(() => console.log("Connected to Data"));
@@ -119,5 +127,5 @@ app.put("/put", async (req, res) => {
     }
   ).then((data)=>res.status(200).send(data));
 });
-app.listen(8080 || process.env.PORT , () => console.log("Connected to Server"));
+
  
